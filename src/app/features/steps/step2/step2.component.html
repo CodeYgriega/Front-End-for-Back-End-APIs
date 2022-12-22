@@ -1,0 +1,62 @@
+<section class="vh-100 d-flex flex-column justify-content-center align-items-center">
+
+    <div class="alert alert-warning w-75 mb-2 shadow">
+        <p class="m-0 fw-bold">¡Aviso!</p>
+        <p class="m-0">
+            - No pongas como strings ("entre comillas") las propiedades pedidas.
+        </p>
+    </div>
+
+    <div class="card w-75 shadow">
+        <div class="card-body d-flex flex-column gap-3">
+            <div>
+                <h1 class="mb-2 fw-bold text-secondary">
+                    Segundo paso
+                </h1>
+                <h3 class="mb-2 fw-bold text-secondary text-opacity-75">
+                    Configurando la response
+                </h3>
+            </div>
+            
+            <form   class="d-flex flex-column gap-3"
+                    [formGroup]="form"
+                    (ngSubmit)="submitForm()">
+
+                <div>
+                    <label for="id">
+                        <p class="m-0 fw-bold text-secondary text-opacity-75">
+                            ¿Cómo figura la propiedad "id" en el objeto a recibir?
+                        </p>
+                    </label>
+                    <input  type="text"
+                            class="form-control mt-1"
+                            id="id"
+                            placeholder="Ej: id, _id, id_user..."
+                            formControlName="id">
+                </div>
+
+                <div>
+                    <label for="title">
+                        <p class="m-0 fw-bold text-secondary text-opacity-75">
+                            ¿Cómo figura la propiedad que quieres que se muestre como título?
+                        </p>
+                    </label>
+                    <input  type="text"
+                            class="form-control mt-1"
+                            id="title"
+                            placeholder="Ej: name, nombre, username..."
+                            formControlName="title">
+                </div>
+
+                <button class="btn btn-info text-white w-50 align-self-end shadow">
+                    Siguiente ->
+                </button>
+            </form>             
+        </div>
+        <div class="card-footer pb-0">
+            <p class="text-secondary">
+                Estas propiedades se utilizarán para extraer los datos de la respuesta de tu API.
+            </p>
+        </div>
+    </div>
+</section>

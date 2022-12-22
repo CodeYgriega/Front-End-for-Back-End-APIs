@@ -1,0 +1,19 @@
+<section class="vh-100 d-flex justify-content-center align-items-center">
+    <div class="card w-75 border border-2 shadow">
+        <div class="card-body my-2">
+
+            <!-- TITULO + FORM-POST-REQUEST -->
+            <app-top-card
+                (postRequest)="getData()">
+            </app-top-card>
+
+            <!-- LISTA -->
+            <app-list-card 
+                *ngFor="let item of items$ | async"
+                [item]="item"
+                (clickedDelete)="eliminar($event)">
+            </app-list-card>
+            
+        </div>
+    </div>
+</section>
