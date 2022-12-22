@@ -32,7 +32,6 @@ export class TopCardComponent {
   }
 
   async sendPostRequest(){
-    this.postRequest.emit("sended");
 
     const newArray = this.arrayForm.map((item: any) => {
       return [item.key, item.value];
@@ -43,6 +42,8 @@ export class TopCardComponent {
     
     const res = await this.service.postDataURL(obj).toPromise();
     console.log(res);
+
+    this.postRequest.emit("sended");
   }
   
 

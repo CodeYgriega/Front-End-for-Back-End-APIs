@@ -22,8 +22,10 @@ export class HttpApiService {
     return this.http.post(URL, data);
   }
 
-  putDataURL(){
-    
+  putDataURL(id: any, data: any){
+    const URL: any = this.userDataService.getURL_PUT();
+    const completeURL = `${URL}/${id}`;
+    return this.http.put(completeURL, data);
   }
 
   deleteDataURL(id: any){

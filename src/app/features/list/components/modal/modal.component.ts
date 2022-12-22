@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { HttpApiService } from 'src/app/core/services/http-api.service';
+import { UserdataService } from 'src/app/core/services/userdata.service';
 
 @Component({
   selector: 'app-modal',
@@ -11,6 +13,10 @@ export class ModalComponent implements OnInit{
 
   @Output() closeModal: EventEmitter<any> = new EventEmitter<any>();
 
+  @Output() putRequest: EventEmitter<any> = new EventEmitter<any>();
+
+  id: any = this.userDataService.getPROP_ID();
+
   arrayForm: any = [
     {
       key: "",
@@ -18,7 +24,10 @@ export class ModalComponent implements OnInit{
     }
   ];
 
-  constructor(){ }
+  constructor(
+    private userDataService: UserdataService,
+    private service: HttpApiService
+  ){ }
 
   ngOnInit(): void {
     this.checkItem(this.item);
@@ -52,8 +61,7 @@ export class ModalComponent implements OnInit{
     this.arrayForm.pop();
   }
 
-  sendPutRequest(){
-    console.log(this.arrayForm);
+  async sendPutRequest(id: any){
     
     const newArray = this.arrayForm.map((item: any) => {
       return [item.key, item.value];
@@ -61,6 +69,11 @@ export class ModalComponent implements OnInit{
 
     const obj = Object.fromEntries(newArray);
     console.log(obj);
+
+    const res = await this.service.putDataURL(id, obj).toPromise();
+    console.log(res);
+
+    this.putRequest.emit("sended");
   }
 
   console(oldValue: any, actualValue: any){
