@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpApiService } from 'src/app/core/services/http-api.service';
+import { WarningHttpRequestsService } from 'src/app/core/services/warning-http-requests.service';
 
 @Component({
   selector: 'app-top-card',
@@ -8,8 +9,6 @@ import { HttpApiService } from 'src/app/core/services/http-api.service';
 })
 export class TopCardComponent {
 
-  @Output() postRequest: EventEmitter<any> = new EventEmitter<any>();
-
   arrayForm: any = [
     {
       key: "",
@@ -17,7 +16,10 @@ export class TopCardComponent {
     }
   ];
 
-  constructor(private service: HttpApiService){ }
+  constructor(
+    private httpService: HttpApiService,
+    private warningService: WarningHttpRequestsService
+  ){ }
 
   addInputs(){
     const obj = {
@@ -38,12 +40,11 @@ export class TopCardComponent {
     });
 
     const obj = Object.fromEntries(newArray);
-    console.log(obj);
     
-    const res = await this.service.postDataURL(obj).toPromise();
-    console.log(res);
+    const res = await this.httpService.postDataURL(obj).toPromise();
 
-    this.postRequest.emit("sended");
+    this.warningService.warning.emit();
+    
   }
   
 

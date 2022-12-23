@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpApiService } from 'src/app/core/services/http-api.service';
 import { UserdataService } from 'src/app/core/services/userdata.service';
+import { WarningHttpRequestsService } from 'src/app/core/services/warning-http-requests.service';
 
 @Component({
   selector: 'app-modal',
@@ -13,8 +14,6 @@ export class ModalComponent implements OnInit{
 
   @Output() closeModal: EventEmitter<any> = new EventEmitter<any>();
 
-  @Output() putRequest: EventEmitter<any> = new EventEmitter<any>();
-
   id: any = this.userDataService.getPROP_ID();
 
   arrayForm: any = [
@@ -26,12 +25,12 @@ export class ModalComponent implements OnInit{
 
   constructor(
     private userDataService: UserdataService,
-    private service: HttpApiService
+    private httpService: HttpApiService,
+    private warningService: WarningHttpRequestsService
   ){ }
 
   ngOnInit(): void {
     this.checkItem(this.item);
-    console.log(this.arrayForm)
   }
 
   onCloseModal(){
@@ -68,23 +67,20 @@ export class ModalComponent implements OnInit{
     });
 
     const obj = Object.fromEntries(newArray);
-    console.log(obj);
 
-    const res = await this.service.putDataURL(id, obj).toPromise();
-    console.log(res);
+    const res = await this.httpService.putDataURL(id, obj).toPromise();
 
-    this.putRequest.emit("sended");
+    this.warningService.warning.emit();
   }
 
-  console(oldValue: any, actualValue: any){
-
-    console.log(oldValue + " " + actualValue);
+  saveValues(oldValue: any, actualValue: any){
 
     this.arrayForm.forEach((item: any) => {
       if(item.value === oldValue){
         item.value = actualValue;
       }
     });
+
   }
 
 }

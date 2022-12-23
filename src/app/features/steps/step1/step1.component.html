@@ -1,93 +1,97 @@
-<section class="h-100 py-5 d-flex flex-column justify-content-center align-items-center">
+<section class="h-100 py-5 d-flex justify-content-center align-items-center">
 
-    <div class="alert alert-warning w-75 mb-2 shadow">
-        <p class="m-0 fw-bold">¡Aviso!</p>
-        <p class="m-0">- No olvides activar los 
-            <a href="" class="text-dark text-opacity-75 fw-bold">CORS.</a>
-        </p>
-        <p class="m-0">- No pongas el "id" en las URL 
-            <span class="fw-bold">PUT</span> y 
-            <span class="fw-bold">DELETE.</span>
-        </p>
-    </div>
-
-    <div class="card w-75 shadow">
-        <div class="card-body d-flex flex-column gap-3">
-            <div>
-                <h1 class="mb-2 fw-bold text-secondary">
-                    Primer paso
-                </h1>
-                <h3 class="mb-2 fw-bold text-secondary text-opacity-75">
-                    Configurando las requests
-                </h3>
-            </div>
-            
-            <form   class="d-flex flex-column gap-3"
-                    [formGroup]="form"
-                    (ngSubmit)="submitForm()">
-
-                <div>
-                    <label for="get_url">
-                        <p class="m-0 fw-bold text-secondary text-opacity-75">
-                            URL para GET request: <span class="text-danger"> *</span>
-                        </p>
-                    </label>
-                    <input  type="text"
-                            class="form-control mt-1"
-                            id="get_url"
-                            placeholder="http://localhost:3000"
-                            formControlName="get_url">
-                </div>
-
-                <div>
-                    <label for="post_url">
-                        <p class="m-0 fw-bold text-secondary text-opacity-75">
-                            URL para POST request:
-                        </p>
-                    </label>
-                    <input  type="text"
-                            class="form-control mt-1"
-                            id="post_url"
-                            placeholder="http://localhost:3000/create-user"
-                            formControlName="post_url">
-                </div>
-
-                <div *ngIf="form.valid">
-                    <label for="put_url">
-                        <p class="m-0 fw-bold text-secondary text-opacity-75">
-                            URL para PUT request:
-                        </p>
-                    </label>
-                    <input  type="text"
-                            class="form-control mt-1"
-                            id="put_url"
-                            placeholder="http://localhost:3000/edit-user/:id"
-                            formControlName="put_url">
-                </div>
-
-                <div *ngIf="form.valid">
-                    <label for="delete_url">
-                        <p class="m-0 fw-bold text-secondary text-opacity-75">
-                            URL para DELETE request:
-                        </p>
-                    </label>
-                    <input  type="text"
-                            class="form-control mt-1"
-                            id="delete_url"
-                            placeholder="http://localhost:3000/delete-user/:id"
-                            formControlName="delete_url">
-                </div>
-
-                <button class="btn btn-info text-white w-50 align-self-end shadow"
-                        [disabled]="!form.valid">
-                    Siguiente ->
-                </button>
-            </form>             
-        </div>
-        <div class="card-footer pb-0">
-            <p class="text-secondary">
-                Estos endpoints se utilizarán para realizar las peticiones.
+    <div class="col-12 col-sm-11 col-md-9 col-lg-8 col-xl-7
+                d-flex flex-column justify-content-center align-items-center">
+        <div class="alert alert-warning w-75 mb-2 shadow">
+            <p class="m-0 fw-bold">¡Aviso!</p>
+            <p class="m-0">- No olvides activar los 
+                <a href="" class="text-dark text-opacity-75 fw-bold">CORS.</a>
+            </p>
+            <p class="m-0">- No pongas el "id" en las URL 
+                <span class="fw-bold">PUT</span> y 
+                <span class="fw-bold">DELETE.</span>
             </p>
         </div>
+    
+        <div class="card w-75 shadow">
+            <div class="card-body d-flex flex-column gap-3">
+                <div>
+                    <h1 class="mb-2 fw-bold text-secondary">
+                        Primer paso
+                    </h1>
+                    <h3 class="mb-2 fw-bold text-secondary text-opacity-75">
+                        Configurando las requests
+                    </h3>
+                </div>
+                
+                <form   class="d-flex flex-column gap-3"
+                        [formGroup]="form"
+                        (ngSubmit)="submitForm()">
+    
+                    <div>
+                        <label for="get_url">
+                            <p class="m-0 fw-bold text-secondary text-opacity-75">
+                                URL para GET request: <span class="text-danger"> *</span>
+                            </p>
+                        </label>
+                        <input  type="text"
+                                class="form-control mt-1"
+                                id="get_url"
+                                placeholder="http://localhost:3000"
+                                formControlName="get_url">
+                    </div>
+    
+                    <div>
+                        <label for="post_url">
+                            <p class="m-0 fw-bold text-secondary text-opacity-75">
+                                URL para POST request:
+                            </p>
+                        </label>
+                        <input  type="text"
+                                class="form-control mt-1"
+                                id="post_url"
+                                placeholder="http://localhost:3000/create-user"
+                                formControlName="post_url">
+                    </div>
+    
+                    <div *ngIf="form.valid">
+                        <label for="put_url">
+                            <p class="m-0 fw-bold text-secondary text-opacity-75">
+                                URL para PUT request:
+                            </p>
+                        </label>
+                        <input  type="text"
+                                class="form-control mt-1"
+                                id="put_url"
+                                placeholder="http://localhost:3000/edit-user/:id"
+                                formControlName="put_url">
+                    </div>
+    
+                    <div *ngIf="form.valid">
+                        <label for="delete_url">
+                            <p class="m-0 fw-bold text-secondary text-opacity-75">
+                                URL para DELETE request:
+                            </p>
+                        </label>
+                        <input  type="text"
+                                class="form-control mt-1"
+                                id="delete_url"
+                                placeholder="http://localhost:3000/delete-user/:id"
+                                formControlName="delete_url">
+                    </div>
+    
+                    <button class="btn btn-info text-white w-50 align-self-end shadow"
+                            [disabled]="!form.valid">
+                        Siguiente ->
+                    </button>
+                </form>             
+            </div>
+            <div class="card-footer pb-0">
+                <p class="text-secondary">
+                    Estos endpoints se utilizarán para realizar las peticiones.
+                </p>
+            </div>
+        </div>
     </div>
+
 </section> 
