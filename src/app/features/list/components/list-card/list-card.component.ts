@@ -18,7 +18,7 @@ export class ListCardComponent {
 
   selectedItem = null;
 
-  constructor(private userDataService: UserdataService){ }
+  constructor(public userDataService: UserdataService){ }
 
   sendID(id: string){
     this.clickedDelete.emit(id);

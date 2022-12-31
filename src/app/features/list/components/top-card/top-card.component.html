@@ -1,6 +1,9 @@
-<p class="px-1 mb-4 pb-2 fw-bold fs-3 text-secondary text-opacity-75 d-flex justify-content-between">
+<p class="px-1 mb-4 pb-3 fw-bold fs-3 text-secondary text-opacity-75 d-flex justify-content-between">
     -Listado Obtenido:
-    <button class="btn btn-sm btn-primary opacity-75 text-white py-0 fw-bold fs-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button class="btn btn-sm btn-primary opacity-75 text-white py-0 fw-bold fs-4"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            [disabled]="userdataservice.getURL_POST() === '' || userdataservice.getURL_POST() === 'null' ">
         +
     </button>
 </p>

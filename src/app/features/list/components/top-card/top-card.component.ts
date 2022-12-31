@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpApiService } from 'src/app/core/services/http-api.service';
+import { UserdataService } from 'src/app/core/services/userdata.service';
 import { WarningHttpRequestsService } from 'src/app/core/services/warning-http-requests.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class TopCardComponent {
 
   constructor(
     private httpService: HttpApiService,
-    private warningService: WarningHttpRequestsService
+    private warningService: WarningHttpRequestsService,
+    public userdataservice: UserdataService
   ){ }
 
   addInputs(){

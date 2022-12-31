@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+
 import { ListRoutingModule } from './list-routing.module';
 import { ListComponent } from './list.component';
 import { ListCardComponent } from './components/list-card/list-card.component';
@@ -19,7 +21,8 @@ import { ModalComponent } from './components/modal/modal.component';
   imports: [
     CommonModule,
     ListRoutingModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ]
 })
 export class ListModule { }

@@ -1,4 +1,4 @@
-<section class="vh-100 d-flex justify-content-center align-items-center">
+<section class="d-flex justify-content-center align-items-center">
     <div class="col-9 col-sm-7 col-md-6 col-lg-5 col-xl-4">
         <div class="alert alert-warning mb-2 shadow">
             <p class="m-0 fw-bold">¡Aviso!</p>
@@ -14,10 +14,23 @@
     
                 <!-- LISTA -->
                 <app-list-card 
-                    *ngFor="let item of items$ | async"
+                    *ngFor="let item of items$ | async | paginate : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                    }"
                     [item]="item"
                     (clickedDelete)="eliminar($event)">
                 </app-list-card>
+
+                <div class="pe-4 pt-4">
+                    <pagination-controls
+                        class="text-center"
+                        previousLabel=""
+                        nextLabel=""
+                        (pageChange)="page = $event">
+                    </pagination-controls>
+                </div>
                 
             </div>
         </div>

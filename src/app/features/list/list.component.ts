@@ -11,7 +11,10 @@ import { WarningHttpRequestsService } from 'src/app/core/services/warning-http-r
 export class ListComponent implements OnInit{
 
   items$: Observable<any> = new Observable<any>();
-
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 5;
+  
   constructor(
     private httpService: HttpApiService,
     private warningService: WarningHttpRequestsService

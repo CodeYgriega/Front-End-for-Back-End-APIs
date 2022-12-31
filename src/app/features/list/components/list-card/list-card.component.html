@@ -6,11 +6,13 @@
     </p>
     <div>
         <button class="btn btn-sm btn-primary me-1"
-                (click)="setSelectedItem(item)">
+                (click)="setSelectedItem(item)"
+                [disabled]="userDataService.getURL_PUT() === '' || userDataService.getURL_PUT() === 'null'">
             Edit
         </button>
         <button class="btn btn-sm btn-danger"
-                (click)="sendID(item[id])">
+                (click)="sendID(item[id])"
+                [disabled]="userDataService.getURL_DELETE() === '' || userDataService.getURL_DELETE() === 'null'">
             Del
         </button>
     </div>
