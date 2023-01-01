@@ -20,7 +20,7 @@
                 <!-- LISTA -->
                 <div class="list-cards-height">
                     <app-list-card 
-                        *ngFor="let item of items$ | async | paginate : {
+                        *ngFor="let item of items | paginate : {
                             itemsPerPage: tableSize,
                             currentPage: page,
                             totalItems: count

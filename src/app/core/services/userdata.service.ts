@@ -59,6 +59,17 @@ export class UserdataService {
       localStorage.removeItem("URL_DELETE");
     }
 
+    //API-USER DATA PROPS: PROPERTY TO ACCESS
+    savePROP_ACCESS(property: any){
+      localStorage.setItem("PROP_ACCESS", property);
+    }
+    getPROP_ACCESS(){
+      return localStorage.getItem("PROP_ACCESS");
+    }
+    deletePROP_ACCESS(){
+      localStorage.removeItem("PROP_ACCESS");
+    }    
+
     //API-USER DATA PROPS: ID
     savePROP_ID(id: string){
       localStorage.setItem("PROP_ID", id);

@@ -1,4 +1,4 @@
-<section class="vh-100 d-flex flex-column justify-content-center align-items-center">
+<section class="my-5 d-flex flex-column justify-content-center align-items-center">
 
     <button class="mx-lg-5 btn btn-outline-secondary abs"
             routerLink="/steps/step1">
@@ -28,6 +28,20 @@
                 <form   class="d-flex flex-column gap-3"
                         [formGroup]="form"
                         (ngSubmit)="submitForm()">
+
+                    <div>
+                        <label for="propertyToAccess">
+                            <p class="m-0 fw-bold text-secondary text-opacity-75">
+                                ¿Cómo figura la propiedad que contiene al array a iterar en la respuesta de la API? <br>
+                                <span class="text-secondary">(Dejar vacío si viene directo en la res)</span>
+                            </p>
+                        </label>
+                        <input  type="text"
+                                class="form-control mt-1"
+                                id="propertyToAccess"
+                                placeholder="Ej: data, array, usuarios..."
+                                formControlName="propertyToAccess">
+                    </div>
     
                     <div>
                         <label for="id">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpApiService } from 'src/app/core/services/http-api.service';
+import { UserdataService } from 'src/app/core/services/userdata.service';
 import { WarningHttpRequestsService } from 'src/app/core/services/warning-http-requests.service';
 
 @Component({
@@ -10,12 +11,13 @@ import { WarningHttpRequestsService } from 'src/app/core/services/warning-http-r
 })
 export class ListComponent implements OnInit{
 
-  items$: Observable<any> = new Observable<any>();
+  items: any = [];
   page: number = 1;
   count: number = 0;
   tableSize: number = 5;
   
   constructor(
+    private userDataService: UserdataService,
     private httpService: HttpApiService,
     private warningService: WarningHttpRequestsService
   ){ }
@@ -32,7 +34,20 @@ export class ListComponent implements OnInit{
   }
 
   getData(){
-    this.items$ = this.httpService.getDataURL();
+    this.httpService.getDataURL().subscribe((res: any) => {
+      
+      const property: any = this.userDataService.getPROP_ACCESS();
+
+      if(property !== 'null' && property !== ''){
+        console.log("if");
+        this.items = res[property];
+      }
+      else{
+        console.log("else");
+        this.items = res;
+      }
+
+    })
   }
 
   async eliminar(_event: any){
