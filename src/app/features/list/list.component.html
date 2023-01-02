@@ -28,9 +28,21 @@
                         [item]="item"
                         (clickedDelete)="eliminar($event)">
                     </app-list-card>
+
+                    <div *ngIf="items.length <= 0">
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="../../../assets/img/sin-resultados.jpg" alt="" class="mb-3" width="250">
+                            <div class="alert alert-danger">
+                                <p class="m-0">
+                                    - Por favor verifica los datos ingresados en la URL "get" y vuélvelo a intentar.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="pe-4 pt-4">
+                <div  *ngIf="items.length > 0" class="pe-4 pt-4">
                     <pagination-controls
                         class="text-center"
                         previousLabel=""
