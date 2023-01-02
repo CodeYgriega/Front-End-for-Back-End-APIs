@@ -3,7 +3,7 @@ section {
 }
 
 .card-height{
-    height: 497px;
+    min-height: 497px;
 }
 
 .list-cards-height{
