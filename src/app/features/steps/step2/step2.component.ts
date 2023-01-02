@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserdataService } from 'src/app/core/services/userdata.service';
 
@@ -21,7 +21,7 @@ export class Step2Component {
     this.form = this.fb.group({
       propertyToAccess: [this.checkStorage().ACCESS],
       id: [this.checkStorage().ID],
-      title: [this.checkStorage().TITLE]
+      title: [this.checkStorage().TITLE, [Validators.required]]
     });
     console.log("me construi")
   }

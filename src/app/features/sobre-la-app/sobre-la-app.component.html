@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+
+<section class="container mt-3 mb-5">
+
+    <div class="d-flex flex-column align-items-center">
+        <img src="../../../assets/img/api-tester.webp" alt="Logo Api Tester" width="205" class="opacity-75">
+            
+        <h1 class="fw-bold text-secondary text-center">
+            Interfaz gráfica e interactiva para APIs de Back-End
+        </h1>
+    </div>
+
+    <div class="mt-3 fw-bold text-dark">
+        <ul class="d-flex flex-column gap-3">
+            <li>
+                Aplicación web desarrolla con las tecnologías <span class="text-success">Angular</span> y <span class="text-success">Bootstrap</span>.
+            </li>
+            <li>
+                El objetivo de la aplicación es que, dinámicamente, sea efectiva para probar la API que el usuario le pase, visualizándola en estilo <span class="text-success">CRUD</span>, donde se mostrará un listado con botones para:
+                <ul class="mt-2 d-flex flex-column gap-2 text-secondary">
+                    <li>Agregar</li>
+                    <li>Editar</li>
+                    <li>Eliminar</li>
+                </ul>
+            </li>
+            <li>
+                El objetivo se logra mediante la información básica que debe brindar el usuario sobre su <span class="text-success">API</span>, como por ejemplo: <br>
+                <ul class="mt-2 d-flex flex-column gap-2">
+                    <li>
+                        Las URLS para efectuar las distintas peticiones <span class="text-success">(GET, POST, PUT, DELETE)</span>.
+                    </li>
+                    <li>
+                        Información sobre las propiedades a acceder en la respuesta obtenida de la API.
+                    </li>
+                    <li>
+                        Propiedades en específico para mostrar correctamente cada elemento en el listado:
+                        <ul class="mt-2 d-flex flex-column gap-2 text-secondary">
+                            <li>
+                                Título, nombre o propiedad elegida para mostrar en la card
+                            </li>
+                            <li>
+                                Id para identificar el elemento y enviarlo por parámetro en las peticiones <span class="text-success">PUT y DELETE</span>.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <button class="btn btn-outline-secondary ms-4"
+                routerLink="/">
+            <- Volver
+        </button>
+    </div>
+
+</section>

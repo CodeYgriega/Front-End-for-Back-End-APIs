@@ -1,19 +1,26 @@
 <div class="list-card d-flex justify-content-between align-items-center
             py-2 px-3 my-2          
             border border-1 border-opacity-50 rounded shadow">
-    <p class="m-0 text-dark text-opacity-75 fw-bold">
+    <p class="m-0 text-dark text-opacity-75 fw-bold d-flex align-items-center gap-1">
+        <span class="material-symbols-outlined">
+            label
+        </span>
         {{ item[title] }}
     </p>
-    <div>
-        <button class="btn btn-sm btn-primary me-1"
+    <div class="d-flex">
+        <button class="btn btn-sm btn-primary me-1 d-flex align-items-center"
                 (click)="setSelectedItem(item)"
                 [disabled]="userDataService.getURL_PUT() === '' || userDataService.getURL_PUT() === 'null'">
-            Edit
+            <span class="material-symbols-outlined">
+                edit
+            </span>
         </button>
-        <button class="btn btn-sm btn-danger"
+        <button class="btn btn-sm btn-danger d-flex align-items-center"
                 (click)="sendID(item[id])"
                 [disabled]="userDataService.getURL_DELETE() === '' || userDataService.getURL_DELETE() === 'null'">
-            Del
+            <span class="material-symbols-outlined">
+                delete
+            </span>
         </button>
     </div>
 </div>

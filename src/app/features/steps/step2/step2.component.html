@@ -1,10 +1,5 @@
 <section class="my-5 d-flex flex-column justify-content-center align-items-center">
 
-    <button class="mx-lg-5 btn btn-outline-secondary abs"
-            routerLink="/steps/step1">
-        <- Atrás
-    </button>
-
     <div class="col-12 col-sm-10 col-md-8 col-lg-7 col-xl-6
                 d-flex flex-column justify-content-center align-items-center">
         <div class="alert alert-warning w-75 mb-2 shadow">
@@ -59,7 +54,7 @@
                     <div>
                         <label for="title">
                             <p class="m-0 fw-bold text-secondary text-opacity-75">
-                                ¿Cómo figura la propiedad que quieres que se muestre como título?
+                                ¿Cómo figura la propiedad que quieres que se muestre como título? <span class="text-danger"> *</span>
                             </p>
                         </label>
                         <input  type="text"
@@ -69,9 +64,21 @@
                                 formControlName="title">
                     </div>
     
-                    <button class="btn btn-info text-white w-50 align-self-end shadow">
-                        Siguiente ->
-                    </button>
+                    <div class="d-flex gap-2">
+                        <div class="d-flex justify-content-start w-100">
+                            <button class="btn btn-secondary text-white w-100 shadow"
+                                    type="button"
+                                    routerLink="/steps/step1">
+                                <- Anterior
+                            </button>
+                        </div>
+                        <div class="d-flex justify-content-end w-100">
+                            <button class="btn btn-info text-white w-100 shadow"
+                                    [disabled]="!form.valid">
+                                Siguiente ->
+                            </button>
+                        </div>
+                    </div>
                 </form>             
             </div>
             <div class="card-footer pb-0">

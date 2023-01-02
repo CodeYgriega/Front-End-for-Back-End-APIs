@@ -1,16 +1,3 @@
 section {
     min-height: 100vh;
 }
-
-.abs{
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1000;
-    background-color: white;
-}
-
-.abs:hover{
-    background-color: #6c757d;
-    color: white;
-}
