@@ -1,5 +1,5 @@
 .list-card {
-    transition: all .3s;
+    transition: all ease .3s;
 }
 
 .list-card:hover {

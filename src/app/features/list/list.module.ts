@@ -9,6 +9,7 @@ import { ListCardComponent } from './components/list-card/list-card.component';
 import { FormsModule } from '@angular/forms';
 import { TopCardComponent } from './components/top-card/top-card.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ModalComponent } from './components/modal/modal.component';
     CommonModule,
     ListRoutingModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    SharedModule
   ]
 })
 export class ListModule { }
