@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 import { HttpApiService } from 'src/app/core/services/http-api.service';
 import { UserdataService } from 'src/app/core/services/userdata.service';
 import { WarningHttpRequestsService } from 'src/app/core/services/warning-http-requests.service';
@@ -9,9 +9,15 @@ import { WarningHttpRequestsService } from 'src/app/core/services/warning-http-r
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ListComponent implements OnInit{
-
+export class ListComponent implements OnInit, OnDestroy{
+  
+  //array with data
   items: any = [];
+  //error message
+  error: boolean = false;
+  //subject for complete the subscription in ngOnDestroy
+  destroy$ = new Subject();
+  //paginate
   page: number = 1;
   count: number = 0;
   tableSize: number = 5;
@@ -26,26 +32,37 @@ export class ListComponent implements OnInit{
     this.getData();
     this.subs();
   }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+  }
   
   subs(){
-    this.warningService.warning.subscribe((res: any) => {
-      this.getData();
-    })
+    this.warningService.warning
+      .pipe(takeUntil(this.destroy$))
+        .subscribe((res: any) => {
+          this.getData();
+        });
   }
 
   getData(){
-    this.httpService.getDataURL().subscribe((res: any) => {
-      
-      const property: any = this.userDataService.getPROP_ACCESS();
+    this.httpService.getDataURL().
+      pipe(takeUntil(this.destroy$))
+        .subscribe((res: any) => {
+          
+          const property: any = this.userDataService.getPROP_ACCESS();
 
-      if(property !== 'null' && property !== ''){
-        console.log("if");
-        this.items = res[property];
-      }
-      else{
-        console.log("else");
-        this.items = res;
-      }
+          if(res[property]){
+            this.error = false;
+            this.items = res[property];
+          }
+          else if(Array.isArray(res)){
+            this.error = false;
+            this.items = res;
+          }
+          else{
+            this.error = true;
+          }
 
     })
   }

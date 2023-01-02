@@ -23,7 +23,6 @@ export class Step2Component {
       id: [this.checkStorage().ID],
       title: [this.checkStorage().TITLE, [Validators.required]]
     });
-    console.log("me construi")
   }
 
   checkStorage(){
@@ -48,7 +47,7 @@ export class Step2Component {
     this.dataService.savePROP_ACCESS(propertyToAccess_user);
     this.dataService.savePROP_ID(id_user);
     this.dataService.savePROP_TITLE(title_user);
-    console.log("me cmande")
+    
     this.router.navigate(["/list"]);
   }
 
